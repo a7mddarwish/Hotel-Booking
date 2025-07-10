@@ -1,0 +1,33 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+
+# Publish
+publish/
+*.Publish.xml
+
+# NuGet
+*.nupkg
+packages/
+project.lock.json
+
+# ASP.NET Secrets
+secrets.json
+appsettings.Development.json
+
+# Test Results
+TestResults/
+*.trx
+*.coverage
+
+# Others
+*.dbmdl
+*.bak
+*.log
