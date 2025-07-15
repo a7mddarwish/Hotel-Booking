@@ -8,8 +8,13 @@
 
   <ItemGroup>
     <Folder Include="Domain\DbConstracts\" />
-    <Folder Include="Domain\Entities\IdentityEntities\" />
     <Folder Include="Domain\ReposConstracts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.18" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.7" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.12.1" />
   </ItemGroup>
 
 </Project>

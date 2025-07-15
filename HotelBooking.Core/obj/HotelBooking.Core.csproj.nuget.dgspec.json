@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programming\\Hotel Booking System\\HotelBooking\\HotelBooking.Core\\HotelBooking.Core.csproj": {}
+    "D:\\Programming\\HotelBooking\\HotelBooking.Core\\HotelBooking.Core.csproj": {}
   },
   "projects": {
-    "D:\\Programming\\Hotel Booking System\\HotelBooking\\HotelBooking.Core\\HotelBooking.Core.csproj": {
+    "D:\\Programming\\HotelBooking\\HotelBooking.Core\\HotelBooking.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programming\\Hotel Booking System\\HotelBooking\\HotelBooking.Core\\HotelBooking.Core.csproj",
+        "projectUniqueName": "D:\\Programming\\HotelBooking\\HotelBooking.Core\\HotelBooking.Core.csproj",
         "projectName": "HotelBooking.Core",
-        "projectPath": "D:\\Programming\\Hotel Booking System\\HotelBooking\\HotelBooking.Core\\HotelBooking.Core.csproj",
+        "projectPath": "D:\\Programming\\HotelBooking\\HotelBooking.Core\\HotelBooking.Core.csproj",
         "packagesPath": "C:\\Users\\A7mdd\\.nuget\\packages\\",
-        "outputPath": "D:\\Programming\\Hotel Booking System\\HotelBooking\\HotelBooking.Core\\obj\\",
+        "outputPath": "D:\\Programming\\HotelBooking\\HotelBooking.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -49,6 +49,20 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.18, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.12.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

@@ -1,3 +1,5 @@
+using HotelBooking.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelBooking.UI
 {
@@ -13,6 +15,11 @@ namespace HotelBooking.UI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            // Register the DbContext with the connection string from appsettings.json
+
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("Dev")));
 
             var app = builder.Build();
 
