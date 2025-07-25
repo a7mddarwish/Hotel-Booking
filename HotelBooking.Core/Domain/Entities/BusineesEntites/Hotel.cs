@@ -17,7 +17,6 @@ namespace HotelBooking.Core.Domain.Entities.BusineesEntites
         public string Localtion { get; set; }
         public float RateFrom5 { get; set; }
         public Guid OwnerId { get; set; }
-        public Guid ReservationId { get; set; }
         public bool IsActive { get; set; }
         public string? Email { get; set; }
         public string PhoneToContact { get; set; }

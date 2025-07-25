@@ -1,5 +1,5 @@
 ﻿using HotelBooking.Core.Domain.Entities.BusineesEntites;
-using HotelBooking.Core.Domain.Entities.Enums;
+using HotelBooking.Core.Domain.Enums;
 using HotelBooking.Core.Domain.Entities.IdentityEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

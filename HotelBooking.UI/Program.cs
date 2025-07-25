@@ -1,4 +1,8 @@
+using HotelBooking.Core;
+using HotelBooking.Core.Domain.Entities.IdentityEntities;
 using HotelBooking.Infrastructure;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelBooking.UI
@@ -16,6 +20,16 @@ namespace HotelBooking.UI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.SC_CoreServices();
+
+            //builder.Services.AddIdentity<AppUser, AppRole>()
+            //    .AddUserStore<AppDbContext>()
+            //    .AddEntityFrameworkStores<AppDbContext>()
+
+            builder.Services.AddIdentity<AppUser, AppRole>()
+                               .AddEntityFrameworkStores<AppDbContext>()
+                               .AddUserStore<UserStore<AppUser, AppRole, AppDbContext, Guid>>()
+                               .AddDefaultTokenProviders();
             // Register the DbContext with the connection string from appsettings.json
 
             builder.Services.AddDbContext<AppDbContext>(options =>

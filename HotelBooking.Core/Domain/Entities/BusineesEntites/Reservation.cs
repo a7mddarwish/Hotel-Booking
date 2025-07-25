@@ -1,5 +1,5 @@
-﻿using HotelBooking.Core.Domain.Entities.Enums;
-using HotelBooking.Core.Domain.Entities.IdentityEntities;
+﻿using HotelBooking.Core.Domain.Entities.IdentityEntities;
+using HotelBooking.Core.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

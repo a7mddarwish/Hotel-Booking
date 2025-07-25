@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HotelBooking.Core.Domain.Entities.Enums
+namespace HotelBooking.Core.Domain.Enums
 {
 
     public enum enReservationState
