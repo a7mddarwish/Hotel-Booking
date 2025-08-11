@@ -26,7 +26,7 @@ namespace HotelBooking.Core.Domain.Entities.Configuration
                           .IsRequired()
                           .HasMaxLength(100);
 
-               builder.Property(h => h.Localtion)
+               builder.Property(h => h.Location)
                        .IsRequired()
                        .HasMaxLength(300);
 

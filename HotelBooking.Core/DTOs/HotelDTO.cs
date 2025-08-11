@@ -10,6 +10,8 @@ namespace HotelBooking.Core.DTOs
 {
     public class HotelDTO
     {
+        public int Id { get; set; }
+
         [Required]
         [MaxLength(100)]
         public string Name { get; set; }
@@ -29,7 +31,7 @@ namespace HotelBooking.Core.DTOs
         public float RateFrom5 { get; set; }
 
         [Required, MaxLength (50)]
-        public Guid OwnerId { get; set; }
+        public string OwnerId { get; set; }
 
         [Required]
         public bool IsActive { get; set; }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelBooking.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250715132815_initialMigration")]
-    partial class initialMigration
+    [Migration("20250810200255_Update_Room_Entity")]
+    partial class Update_Room_Entity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -88,14 +88,10 @@ namespace HotelBooking.Infrastructure.Migrations
                         .HasColumnType("bit")
                         .HasDefaultValue(true);
 
-                    b.Property<string>("Localtion")
+                    b.Property<string>("Location")
                         .IsRequired()
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -112,9 +108,6 @@ namespace HotelBooking.Infrastructure.Migrations
 
                     b.Property<double>("RateFrom5")
                         .HasColumnType("float");
-
-                    b.Property<Guid>("ReservationId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -191,10 +184,6 @@ namespace HotelBooking.Infrastructure.Migrations
 
                     b.Property<int>("RoomTypeId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RoomId", "HotelId");
 

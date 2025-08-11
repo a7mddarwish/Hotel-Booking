@@ -85,14 +85,10 @@ namespace HotelBooking.Infrastructure.Migrations
                         .HasColumnType("bit")
                         .HasDefaultValue(true);
 
-                    b.Property<string>("Localtion")
+                    b.Property<string>("Location")
                         .IsRequired()
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -185,10 +181,6 @@ namespace HotelBooking.Infrastructure.Migrations
 
                     b.Property<int>("RoomTypeId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RoomId", "HotelId");
 

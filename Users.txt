@@ -1,0 +1,60 @@
+----- OWNER -----
+{
+    "fName": "Ahmed",
+    "mName": "Mohamed",
+    "lName": "Hassan",
+    "nationalityID": "EG1234567890",
+    "phoneNumber": "+201001112223",
+    "secondPhoneNum": "+201005556667",
+    "jobTitle": "Software Engineer",
+    "gender": "Male",
+    "profileImage": "https://example.com/images/ahmed.jpg",
+    "birthDate": "1995-03-12",
+    "email": "ahmed.hassan@example.com",
+    "password": "P@ssw0rd123",
+    "confirmPassword": "P@ssw0rd123"
+  }
+---- Admin-----
+
+{
+  "success": true,
+  "message": "User added Successfully",
+  "result": {
+    "fName": "Hamza",
+    "mName": "Waleed",
+    "lName": "Darwish",
+    "nationalityID": "EG4567891230",
+    "phoneNumber": "+201223334445",
+    "secondPhoneNum": "+201234567890",
+    "jobTitle": "Manager",
+    "gender": "M",
+    "profileImage": "",
+    "birthDate": "1990-11-05",
+    "email": "Hamza.Waleed@example.com",
+    "password": "0m@R2025",
+    "confirmPassword": "0m@R2025"
+  },
+  "errors": null
+}
+---- Customer ----
+{
+  "success": true,
+  "message": "User added Successfully",
+  "result": {
+    "fName": "Ammar",
+    "mName": "Yasser",
+    "lName": "Abdelsadek",
+    "nationalityID": "EG9876543210",
+    "phoneNumber": "+201115556667",
+    "secondPhoneNum": "+201112223334",
+    "jobTitle": "NonTechManger",
+    "gender": "M",
+    "profileImage": "",
+    "birthDate": "1998-07-25",
+    "email": "Ammar.Yasser@example.com",
+    "password": "@Ys2025",
+    "confirmPassword": "@Ys2025"
+  },
+  "errors": null
+}
+

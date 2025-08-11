@@ -21,11 +21,9 @@ namespace HotelBooking.UI
             builder.Services.AddSwaggerGen();
 
             builder.Services.SC_CoreServices();
+            builder.Services.SC_InfraServices(builder.Configuration);
 
-            //builder.Services.AddIdentity<AppUser, AppRole>()
-            //    .AddUserStore<AppDbContext>()
-            //    .AddEntityFrameworkStores<AppDbContext>()
-
+        
             builder.Services.AddIdentity<AppUser, AppRole>()
                                .AddEntityFrameworkStores<AppDbContext>()
                                .AddUserStore<UserStore<AppUser, AppRole, AppDbContext, Guid>>()

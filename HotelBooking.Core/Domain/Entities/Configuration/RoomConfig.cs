@@ -23,6 +23,8 @@ namespace HotelBooking.Core.Domain.Entities.Configuration
                 .OnDelete(DeleteBehavior.NoAction);
 
 
+
+
         }
     }
 }

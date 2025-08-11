@@ -14,6 +14,7 @@ namespace HotelBooking.Core.MappingProfiles
         public HotelProfile()
         {
             CreateMap<Hotel, HotelDTO>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.Location))
                 .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))
@@ -25,6 +26,7 @@ namespace HotelBooking.Core.MappingProfiles
                 .ForMember(dest => dest.PhoneToContact, opt => opt.MapFrom(src => src.PhoneToContact));
 
             CreateMap<HotelDTO, Hotel>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.Location))
                 .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))

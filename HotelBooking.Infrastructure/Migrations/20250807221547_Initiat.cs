@@ -1,12 +1,12 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-#nullable disable
+//#nullable disable
 
 namespace HotelBooking.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class initialMigration : Migration
+    public partial class Initiat : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -203,13 +203,11 @@ namespace HotelBooking.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     City = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Country = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Localtion = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    Location = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
                     RateFrom5 = table.Column<double>(type: "float", nullable: false),
                     OwnerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ReservationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     PhoneToContact = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)

@@ -59,7 +59,7 @@ namespace HotelBooking.UI.Controllers
             }
 
 
-            Result = await userManager.AddToRoleAsync(user , "owner");
+            Result = await userManager.AddToRoleAsync(user , "CUSTOMER");
 
             if (!Result.Succeeded)
             {
@@ -86,6 +86,7 @@ namespace HotelBooking.UI.Controllers
             
             });
         }
+
     } 
 }
 

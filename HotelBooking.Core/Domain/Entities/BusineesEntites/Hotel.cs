@@ -11,10 +11,9 @@ namespace HotelBooking.Core.Domain.Entities.BusineesEntites
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Location { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public string Localtion { get; set; }
+        public string Location { get; set; }
         public float RateFrom5 { get; set; }
         public Guid OwnerId { get; set; }
         public bool IsActive { get; set; }

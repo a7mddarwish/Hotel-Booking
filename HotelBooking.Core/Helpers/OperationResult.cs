@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HotelBooking.Core.Helpers
 {
-    public class OperationResult<T> where T : class
+    public class OperationResult<T> 
     {
 
         public bool Success { get; set; }
@@ -17,7 +17,7 @@ namespace HotelBooking.Core.Helpers
         public static OperationResult<T> SuccessOperation(T data)
             => new OperationResult<T> { Success = true, Data = data };
 
-        public static OperationResult<T> Falier(string errors)
+        public static OperationResult<T> Failure(string errors)
             => new OperationResult<T> {Success = false, ErrorMessage = errors };
 
 
