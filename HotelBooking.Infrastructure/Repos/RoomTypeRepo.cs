@@ -51,7 +51,7 @@ namespace HotelBooking.Infrastructure.Repos
                     .ToListAsync();
 
                 if(roomTypes is null)
-                    return OperationResult<IEnumerable<RoomType>>.Failure($"An error occurred while retrieving room types");
+                    return OperationResult<IEnumerable<RoomType>>.Failure("An error occurred while retrieving room types");
           
            
                 return OperationResult<IEnumerable<RoomType>>.SuccessOperation(roomTypes);

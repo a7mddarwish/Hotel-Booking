@@ -46,10 +46,6 @@ namespace HotelBooking.UI.Controllers
             return BadRequest(result.ErrorMessage ?? "Failed to add amenity.");
         }
 
-        [HttpPost]
-        public IActionResult pp(ShowRoomTypeDTO dl  ,List<IFormFile> imgs )
-        {
-            return Ok(dl);
-        }
+      
     }
 }
