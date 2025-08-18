@@ -11,7 +11,6 @@ namespace HotelBooking.Core.Domain.Entities.IdentityEntities
         public string MName { get; set;}
         public string LName { get; set;}
 
-        //get only property , calculated in runtime and Not mapped
         [NotMapped]
         public string FullName { get => $"{FName} {MName} {LName}";}
         public string NationaltyID { get; set; }
@@ -31,5 +30,8 @@ namespace HotelBooking.Core.Domain.Entities.IdentityEntities
         
         //AppUser as a Hotel Owner
         public List<Hotel> Hotels { get; set; } = new List<Hotel>();
+
+
+
     }
 }

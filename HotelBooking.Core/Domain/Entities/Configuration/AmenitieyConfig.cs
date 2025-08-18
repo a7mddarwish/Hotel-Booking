@@ -10,11 +10,17 @@ namespace HotelBooking.Core.Domain.Entities.Configuration
         {
             builder.HasKey(a => a.Id);
              builder.Property(a => a.Id)
-                .UseIdentityColumn(1,1);
+                .UseIdentityColumn(1,1);       
+
+            builder.Property(a => a.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+
 
         
-            builder.Property(a => a.IconUrl)
-                .IsRequired();
+        
+        
+        
         }
     }
 

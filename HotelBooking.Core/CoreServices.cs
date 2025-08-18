@@ -26,7 +26,7 @@ namespace HotelBooking.Core
 
         public static void SC_RegisterServices(IServiceCollection SC)
         {
-            SC.AddScoped<HotelServ, HotelServ>();
+            SC.AddScoped<IHotelServ, HotelServ>();
             SC.AddScoped<IAmenitiyServ, AmenitiyServ>();
             SC.AddScoped<IRoomTypeServ, RoomTypeServ>();
         }

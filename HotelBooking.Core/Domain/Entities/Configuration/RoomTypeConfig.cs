@@ -30,10 +30,10 @@ namespace HotelBooking.Core.Domain.Entities.Configuration
                    .HasForeignKey(r => r.RoomTypeId);
 
           
-            //implicit many-to-many relationship 
             builder.HasMany(r => r.Amenities)
                 .WithMany(a => a.RoomTypes)
                 .UsingEntity(i => i.ToTable("RoomTypeAmenities"));
+
 
 
         }

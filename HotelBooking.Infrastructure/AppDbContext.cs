@@ -20,9 +20,10 @@ namespace HotelBooking.Infrastructure
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Amenitiey> Amenities { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
-        public DbSet<RoomImage> roomImages { get; set; }
+        public DbSet<SysImage> SysImage { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomType> RoomTypes { get; set; }
+        public DbSet<EntityImage> EntityImages { get; set; }
 
     
 

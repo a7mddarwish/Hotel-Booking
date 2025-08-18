@@ -45,17 +45,50 @@ namespace HotelBooking.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("IconUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Amenities");
+                });
+
+            modelBuilder.Entity("HotelBooking.Core.Domain.Entities.BusineesEntites.EntityImage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
+
+                    b.Property<string>("EntityID")
+                        .IsRequired()
+                        .HasColumnType("VARCHAR(36)");
+
+                    b.Property<string>("EntitySet")
+                        .IsRequired()
+                        .HasMaxLength(35)
+                        .HasColumnType("VARCHAR");
+
+                    b.Property<Guid>("ImageID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsPrimary")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<Guid?>("SysImageImageID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ImageID");
+
+                    b.HasIndex("SysImageImageID");
+
+                    b.ToTable("EntityImages", (string)null);
                 });
 
             modelBuilder.Entity("HotelBooking.Core.Domain.Entities.BusineesEntites.Hotel", b =>
@@ -191,21 +224,6 @@ namespace HotelBooking.Infrastructure.Migrations
                     b.ToTable("Rooms");
                 });
 
-            modelBuilder.Entity("HotelBooking.Core.Domain.Entities.BusineesEntites.RoomImage", b =>
-                {
-                    b.Property<string>("ImageURL")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("RoomTypeID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ImageURL");
-
-                    b.HasIndex("RoomTypeID");
-
-                    b.ToTable("roomImages");
-                });
-
             modelBuilder.Entity("HotelBooking.Core.Domain.Entities.BusineesEntites.RoomType", b =>
                 {
                     b.Property<int>("Id")
@@ -233,6 +251,32 @@ namespace HotelBooking.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("RoomTypes");
+                });
+
+            modelBuilder.Entity("HotelBooking.Core.Domain.Entities.BusineesEntites.SysImage", b =>
+                {
+                    b.Property<Guid>("ImageID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("ImageID")
+                        .HasDefaultValueSql("NEWID()");
+
+                    b.Property<string>("DeletionURL")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("DisplayURL")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime>("UploadedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ImageID");
+
+                    b.ToTable("Images", (string)null);
                 });
 
             modelBuilder.Entity("HotelBooking.Core.Domain.Entities.IdentityEntities.AppRole", b =>
@@ -364,6 +408,21 @@ namespace HotelBooking.Infrastructure.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("HotelRoomType", b =>
+                {
+                    b.Property<int>("HotelsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomTypesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("HotelsId", "RoomTypesId");
+
+                    b.HasIndex("RoomTypesId");
+
+                    b.ToTable("HotelRoomTypes", (string)null);
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.Property<int>("Id")
@@ -482,6 +541,21 @@ namespace HotelBooking.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("HotelBooking.Core.Domain.Entities.BusineesEntites.EntityImage", b =>
+                {
+                    b.HasOne("HotelBooking.Core.Domain.Entities.BusineesEntites.SysImage", "Image")
+                        .WithMany()
+                        .HasForeignKey("ImageID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HotelBooking.Core.Domain.Entities.BusineesEntites.SysImage", null)
+                        .WithMany("EntityImages")
+                        .HasForeignKey("SysImageImageID");
+
+                    b.Navigation("Image");
+                });
+
             modelBuilder.Entity("HotelBooking.Core.Domain.Entities.BusineesEntites.Hotel", b =>
                 {
                     b.HasOne("HotelBooking.Core.Domain.Entities.IdentityEntities.AppUser", "Owner")
@@ -539,15 +613,19 @@ namespace HotelBooking.Infrastructure.Migrations
                     b.Navigation("RoomType");
                 });
 
-            modelBuilder.Entity("HotelBooking.Core.Domain.Entities.BusineesEntites.RoomImage", b =>
+            modelBuilder.Entity("HotelRoomType", b =>
                 {
-                    b.HasOne("HotelBooking.Core.Domain.Entities.BusineesEntites.RoomType", "roomtype")
-                        .WithMany("RoomImages")
-                        .HasForeignKey("RoomTypeID")
+                    b.HasOne("HotelBooking.Core.Domain.Entities.BusineesEntites.Hotel", null)
+                        .WithMany()
+                        .HasForeignKey("HotelsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("roomtype");
+                    b.HasOne("HotelBooking.Core.Domain.Entities.BusineesEntites.RoomType", null)
+                        .WithMany()
+                        .HasForeignKey("RoomTypesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -615,9 +693,12 @@ namespace HotelBooking.Infrastructure.Migrations
 
             modelBuilder.Entity("HotelBooking.Core.Domain.Entities.BusineesEntites.RoomType", b =>
                 {
-                    b.Navigation("RoomImages");
-
                     b.Navigation("Rooms");
+                });
+
+            modelBuilder.Entity("HotelBooking.Core.Domain.Entities.BusineesEntites.SysImage", b =>
+                {
+                    b.Navigation("EntityImages");
                 });
 
             modelBuilder.Entity("HotelBooking.Core.Domain.Entities.IdentityEntities.AppUser", b =>

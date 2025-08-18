@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HotelBooking.Core.Domain.Entities.BusineesEntites;
+using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +12,11 @@ namespace HotelBooking.Core.DTOs
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string IconUrl { get; set; }
+       
+        
+        public DisplayImageDTO imagedto { get; set; } 
+
+
 
 
 

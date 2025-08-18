@@ -1,10 +1,6 @@
 ﻿using HotelBooking.Core.DTOs;
 using HotelBooking.Core.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace HotelBooking.Core.Domain.ServicesContracts
 {
@@ -12,6 +8,6 @@ namespace HotelBooking.Core.Domain.ServicesContracts
     {
         public Task<OperationResult<IEnumerable<ShowRoomTypeDTO>>> GetAllRoomTypes();
 
-        public OperationResult<ShowRoomTypeDTO> AddNewRoomType(AddRoomTypeDTO roomTypeDTO);
+        public Task<OperationResult<ShowRoomTypeDTO>> AddNewRoomType(AddRoomTypeDTO roomTypeDTO , List<IFormFile> images);
     }
 }

@@ -28,21 +28,20 @@ namespace HotelBooking.UI.Controllers
             return StatusCode(StatusCodes.Status500InternalServerError, result.ErrorMessage ?? "An error occurred while retrieving amenities.");
         }
 
-        [HttpPost("kajd")]
-        public IActionResult AddNewAmenity([FromBody] AmenitieyDTO amenitieyDTO)
+        [HttpPost()]
+        public async Task<IActionResult>AddNewAmenity(AddAminityDTO addamenitieyDTO )
         {
-            if (amenitieyDTO == null)
+            if (addamenitieyDTO == null)
                 return BadRequest("Amenity data is required.");
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var result = serv.AddNewAminity(amenitieyDTO);
+            var result = await serv.AddNewAminity(addamenitieyDTO);
 
             if (result.Success)
                 return CreatedAtAction(nameof(GetAllAmenities), new { id = result.Data?.Id }, result.Data);
-            
-          
+
             return BadRequest(result.ErrorMessage ?? "Failed to add amenity.");
         }
 

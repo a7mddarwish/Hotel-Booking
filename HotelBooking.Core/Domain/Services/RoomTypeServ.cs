@@ -3,12 +3,10 @@ using HotelBooking.Core.Domain.Entities.BusineesEntites;
 using HotelBooking.Core.Domain.ReposConstracts;
 using HotelBooking.Core.Domain.ServicesContracts;
 using HotelBooking.Core.DTOs;
+using HotelBooking.Core.ExternalServContracts;
 using HotelBooking.Core.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using System.Net.Http.Headers;
 
 namespace HotelBooking.Core.Domain.Services
 {
@@ -16,14 +14,16 @@ namespace HotelBooking.Core.Domain.Services
     {
         private readonly IRoomTypeRepo _repo;
         private readonly IMapper _mapper;
+        private readonly ICloudServ _cloudserv;
 
-        public RoomTypeServ(IRoomTypeRepo repo , IMapper mapper)
+        public RoomTypeServ(IRoomTypeRepo repo , IMapper mapper , ICloudServ cloudserv)
         {
             this._repo = repo;
             this._mapper = mapper;
+            this._cloudserv = cloudserv;
         }
 
-        public OperationResult<ShowRoomTypeDTO> AddNewRoomType(AddRoomTypeDTO roomTypeDTO)
+        public async Task<OperationResult<ShowRoomTypeDTO>> AddNewRoomType(AddRoomTypeDTO roomTypeDTO , List<IFormFile> Roomimgs)
         {
             if (roomTypeDTO == null)
                 return OperationResult<ShowRoomTypeDTO>.Failure("Room type data is required.");
@@ -37,9 +37,21 @@ namespace HotelBooking.Core.Domain.Services
             if (roomTypeDTO.PricePerNight < 0)
                 return OperationResult<ShowRoomTypeDTO>.Failure("Price per night must be non-negative.");
 
-
             var roomType = _mapper.Map<RoomType>(roomTypeDTO);
 
+
+            var imgsinfo = await _cloudserv.UploadImagesAsync(Roomimgs);
+
+            //if (imgsinfo.Success)
+
+            //    //Hi copilot , solve this error.
+            //    roomType.RoomImages = imgsinfo.Data.Select(img => new RoomImage
+            //    {
+            //        DeleteImageURL = img.DeleteUrl,
+            //        ImageURL = img.DisplayUrl,
+            //        roomtype = roomType,
+            //        RoomTypeID = roomType.Id
+            //    }).ToList();
 
             if (roomTypeDTO.amenitiesIDs != null)
             {
@@ -48,6 +60,7 @@ namespace HotelBooking.Core.Domain.Services
                     .ToList();
             }
 
+            
             var result = _repo.Create(roomType);
 
             if (!result.Success)

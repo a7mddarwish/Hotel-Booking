@@ -44,11 +44,11 @@ namespace HotelBooking.Infrastructure.Repos
 
         public async Task<OperationResult<IEnumerable<RoomType>>> GetRoomTypes()
         {
-           
-                var roomTypes = await _context.RoomTypes
-                    .Include(rt => rt.RoomImages)
-                    .Include(rt => rt.Amenities)
-                    .ToListAsync();
+
+                var roomTypes =  new List<RoomType>(); //await _context.RoomTypes
+                //    .Include(rt => rt.RoomImages)
+                //    .Include(rt => rt.Amenities)
+                //    .ToListAsync();
 
                 if(roomTypes is null)
                     return OperationResult<IEnumerable<RoomType>>.Failure("An error occurred while retrieving room types");

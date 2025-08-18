@@ -7,8 +7,7 @@ namespace HotelBooking.Core.Domain.ReposConstracts
     {
         public Task<OperationResult<IEnumerable<Amenitiey>>> GetAmenities();
 
-        public OperationResult<Amenitiey> AddAmenitiey(Amenitiey amenitiey);
+        public OperationResult<Amenitiey> AddAmenitiey(Amenitiey amenitiey );
 
-        
     }
 }

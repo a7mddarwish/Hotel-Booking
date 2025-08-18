@@ -10,7 +10,8 @@ namespace HotelBooking.Core.DTOs
 {
     public class AddRoomTypeDTO : BaseRoomTypeDTO
     {
-     public IEnumerable<int> amenitiesIDs { get; set; }
+      public IEnumerable<int> amenitiesIDs { get; set; }
+
 
 
     }

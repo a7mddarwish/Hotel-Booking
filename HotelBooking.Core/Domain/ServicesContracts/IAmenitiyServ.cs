@@ -1,5 +1,6 @@
 ﻿using HotelBooking.Core.DTOs;
 using HotelBooking.Core.Helpers;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,6 @@ namespace HotelBooking.Core.Domain.ServicesContracts
     public interface IAmenitiyServ
     {
         public Task<OperationResult<IEnumerable<AmenitieyDTO>>> GetAmenities();
-        public OperationResult<AmenitieyDTO> AddNewAminity(AmenitieyDTO amenitieyDTO);
+        public Task<OperationResult<AmenitieyDTO>> AddNewAminity(AddAminityDTO amenitieyDTO );
     }
 }

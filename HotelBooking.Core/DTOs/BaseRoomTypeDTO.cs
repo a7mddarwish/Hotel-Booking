@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace HotelBooking.Core.DTOs
 {
     public abstract class BaseRoomTypeDTO
-    {
+    { 
         public string Name { get; set; }
         public string Description { get; set; }
         public byte Capacity { get; set; }

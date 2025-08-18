@@ -30,7 +30,7 @@ namespace HotelBooking.UI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddRoomType([FromBody] AddRoomTypeDTO roomTypeDTO)
+        public async Task<IActionResult> AddRoomType([FromBody] AddRoomTypeDTO roomTypeDTO ,  List<IFormFile> images)
         {
             if (roomTypeDTO == null)
                 return BadRequest("Room type data is required.");
@@ -38,11 +38,15 @@ namespace HotelBooking.UI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var result = _roomTypeServ.AddNewRoomType(roomTypeDTO);
+            var result = await _roomTypeServ.AddNewRoomType(roomTypeDTO , images);
             if (result.Success)
-                return CreatedAtAction(nameof(GetAllRoomTypes), new { id = result.Data?.Id }, result.Data);
+                // return CreatedAtAction(nameof(GetAllRoomTypes), new { id = result.Data?.Id }, result.Data);
+                return Ok(new { Data = result.Data });
 
             return BadRequest(result.ErrorMessage ?? "Failed to add room type.");
         }
+
+
+
     }
 }

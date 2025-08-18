@@ -52,10 +52,16 @@ namespace HotelBooking.Core.Domain.Entities.Configuration
 
 
 
-            builder.HasMany(H => H.Reservations)
-                    .WithOne(r => r.Hotel)
-                   .HasForeignKey(H => H.HotelId)
-                   .OnDelete(DeleteBehavior.NoAction);
+                builder.HasMany(H => H.Reservations)
+                        .WithOne(r => r.Hotel)
+                       .HasForeignKey(H => H.HotelId)
+                       .OnDelete(DeleteBehavior.NoAction);
+
+
+                builder.HasMany(h => h.RoomTypes)
+                    .WithMany(rt => rt.Hotels)
+                    .UsingEntity(j => j.ToTable("HotelRoomTypes"));
+
 
         }
         }

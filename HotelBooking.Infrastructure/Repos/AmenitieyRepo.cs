@@ -1,4 +1,5 @@
 ﻿using HotelBooking.Core.Domain.Entities.BusineesEntites;
+using HotelBooking.Core.Domain.Enums;
 using HotelBooking.Core.Domain.ReposConstracts;
 using HotelBooking.Core.Helpers;
 using Microsoft.EntityFrameworkCore;
@@ -27,11 +28,18 @@ namespace HotelBooking.Infrastructure.Repos
 
             _context.Amenities.Add(amenitiey);
 
-            if(_context.SaveChanges() > 0)
-            return OperationResult<Amenitiey>.SuccessOperation(amenitiey);
-
-
+            if(_context.SaveChanges() <= 0)
             return OperationResult<Amenitiey>.Failure("Sothing went wrong while Saving Process");
+
+            amenitiey.EntityImageInfo.EntityID = amenitiey.Id;
+
+
+            _context.EntityImages.Add(amenitiey.EntityImageInfo);   
+
+           if (_context.SaveChanges() <= 0)
+               return OperationResult<Amenitiey>.Failure("Sothing went wrong while Saving Image Process");
+
+            return OperationResult<Amenitiey>.SuccessOperation(amenitiey);
 
 
 
@@ -40,7 +48,7 @@ namespace HotelBooking.Infrastructure.Repos
         public async Task<OperationResult<IEnumerable<Amenitiey>>> GetAmenities()
         {
 
-            var amineties = await _context.Amenities.ToListAsync();
+            var amineties =  await _context.Amenities.ToListAsync();
 
             if (!amineties.Any())
             return OperationResult<IEnumerable<Amenitiey>>.Failure("Sothing went wrong while fetching data");
@@ -50,6 +58,11 @@ namespace HotelBooking.Infrastructure.Repos
             return OperationResult<IEnumerable<Amenitiey>>.Failure("can not found any amenities");
 
 
+            amineties.ForEach(a => a.EntityImageInfo =
+            _context.EntityImages.Include(e => e.Image).FirstOrDefault(e => e.EntitySet == enImageEntites.AMENITIEY && e.EntityID == a.Id.ToString().Trim()));
+
+
+           
             return OperationResult<IEnumerable<Amenitiey>>.SuccessOperation(amineties);
 
 

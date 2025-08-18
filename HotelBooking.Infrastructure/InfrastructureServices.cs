@@ -1,5 +1,7 @@
 ﻿using HotelBooking.Core.Domain.Entities.IdentityEntities;
 using HotelBooking.Core.Domain.ReposConstracts;
+using HotelBooking.Core.ExternalServContracts;
+using HotelBooking.Infrastructure.ExternalServ;
 using HotelBooking.Infrastructure.Repos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +27,8 @@ namespace HotelBooking.Infrastructure
         {
             Services.AddScoped<IHotelRepo, HotelRepo>();
             Services.AddScoped<IAmenitieyRepo, AmenitieyRepo>();
+            Services.AddScoped<IRoomTypeRepo, RoomTypeRepo>();
+            Services.AddScoped<ICloudServ, CloudServ>();
 
         }
 

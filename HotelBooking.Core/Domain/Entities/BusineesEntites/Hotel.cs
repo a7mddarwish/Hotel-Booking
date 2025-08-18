@@ -25,6 +25,9 @@ namespace HotelBooking.Core.Domain.Entities.BusineesEntites
         public List<Room> Rooms { get; set; }
         public List<Reservation> Reservations { get; set; }
 
+        public List<RoomType> RoomTypes { get; set; } = new();
+
+
 
     }
 }

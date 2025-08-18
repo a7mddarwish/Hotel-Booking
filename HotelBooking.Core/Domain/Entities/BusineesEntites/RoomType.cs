@@ -14,10 +14,12 @@ namespace HotelBooking.Core.Domain.Entities.BusineesEntites
         public byte Capacity { get; set; }
         public decimal PricePerNight { get; set; }
 
-
+         
         // Navigation
         public List<Room> Rooms { get; set; } = new();
-        public List<RoomImage> RoomImages { get; set; } = new();
         public List<Amenitiey> Amenities { get; set; } = new();
+        public List<Hotel> Hotels { get; set; } = new();
+        
+        
     }
 }
